@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import {useState} from "react"
 import './App.css';
+import Modal from "./Modal";
 
 function App() {
+
+const [showModal, setShowModal] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Reusbale-Modal Component</h1>
+     
+      <button className="modal-button" onClick={() =>{
+        setShowModal((prev) => !prev)}}
+      >Show Modal</button>
+  <Modal
+  shouldShow = {showModal}
+  onRequestClose = {()=>{
+    setShowModal((prev) =>!prev)
+  }}>
+    <div>Opps..! You have lost the connection. Please try again.</div>
+  </Modal>
+
+     
     </div>
   );
 }
